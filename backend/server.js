@@ -6,6 +6,7 @@ import connectDB from './configs/Db.js';
 import userData from './routes/userData.js';
 import loginrouter from './routes/Login.js';
 import protect from './middlewares/auth.js';
+import Otprouter from './routes/otprouter.js';
 
 
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use("/user",protect, userData);
 app.use('/api',loginrouter);
+app.use('/api', Otprouter);
 
 app.use('/', (req, res) => {
     res.send("this is home route ");
