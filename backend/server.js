@@ -7,7 +7,9 @@ import userData from './routes/userData.js';
 import loginrouter from './routes/Login.js';
 import protect from './middlewares/auth.js';
 import Otprouter from './routes/otprouter.js';
-
+import projectRoutes from './routes/projectRoutes.js';
+import postProject from './routes/postProject.js';
+import donationRoutes from "./routes/donations.js"
 
 
 const app = express();
@@ -17,6 +19,10 @@ app.use(bodyParser.json());
 app.use("/user",protect, userData);
 app.use('/api',loginrouter);
 app.use('/api', Otprouter);
+app.use("/projects",projectRoutes);
+app.use("/project",protect, postProject);
+app.use('/api/donations', donationRoutes);
+
 
 app.use('/', (req, res) => {
     res.send("this is home route ");
