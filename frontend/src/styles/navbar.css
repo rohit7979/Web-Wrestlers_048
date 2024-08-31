@@ -1,0 +1,21 @@
+/* Add this CSS to your project */
+@media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+  
+    .hamburger-icon {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .nav-links {
+      display: flex;
+    }
+  
+    .hamburger-icon {
+      display: none;
+    }
+  }
+  

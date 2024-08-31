@@ -1,0 +1,33 @@
+/* detailedProject.css */
+
+.detailed-project {
+    margin: 20px;
+  }
+  
+  .detailed-project h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .detailed-project p {
+    margin: 0.5rem 0;
+  }
+  
+  .detailed-project h3 {
+    margin-top: 1.5rem;
+  }
+  
+  .detailed-project ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .detailed-project ul li {
+    margin: 0.5rem 0;
+  }
+  
+  .detailed-project img {
+    max-width: 100%;
+    height: auto;
+  }
+  
