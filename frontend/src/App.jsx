@@ -18,15 +18,13 @@ import PrivateRoute from './privateRoutes/PrivateRoute';
 
 // import Test from './test/test';
 import { FundRaise } from './components/fundRaise';
-import PromptForm from './components/Chatbot';
+
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('accessToken'));
   const [showPromptForm, setShowPromptForm] = useState(false);
 
-  const handleButtonClick = () => {
-    setShowPromptForm(!showPromptForm);
-  };
+
 
 
   return (
@@ -65,25 +63,10 @@ const App = () => {
             boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
             zIndex: 1001
           }}>
-            <PromptForm />
+          
           </div>
         )}
-        
-        {/* Sticky button */}
-        <button 
-          style={{
-            backgroundColor: '#007bff',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '5px',
-            padding: '10px 20px',
-            cursor: 'pointer',
-            zIndex: 1000
-          }} 
-          onClick={handleButtonClick}
-        >
-          Bot
-        </button>
+
       </div>
     </div>
   );
