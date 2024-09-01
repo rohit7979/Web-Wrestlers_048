@@ -10,7 +10,7 @@ import Otprouter from './routes/otprouter.js';
 import projectRoutes from './routes/projectRoutes.js';
 import postProject from './routes/postProject.js';
 import donationRoutes from "./routes/donations.js"
-
+import paymentRoutes from "./routes/payment.js"
 
 const app = express();
 app.use(cors());
@@ -22,7 +22,7 @@ app.use('/api', Otprouter);
 app.use("/projects",projectRoutes);
 app.use("/project",protect, postProject);
 app.use('/api/donations', donationRoutes);
-
+app.use('/api/payment',protect, paymentRoutes);
 
 app.use('/', (req, res) => {
     res.send("this is home route ");
