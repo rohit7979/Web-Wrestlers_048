@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Box, Flex, VStack, Text, Button, Image, Progress } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/home.css';
-import pic from '../../images/kids.jpg';
-import kids from '../../images/charity.jpg';
+import pic from '../../images/kids1.png';
+import kids from '../../images/charity1.png';
 import lg from '../../images/logo_transparent.png';
 
 export const HomePage = () => {
@@ -87,11 +87,10 @@ export const HomePage = () => {
     <div className="home-page">
       <div id="home">
         <img src={pic} alt="kids" />
-        <h1>This is What We Do</h1>
       </div>
       <div className="description">
         <p>
-          Students from all backgrounds deserve access to quality education and opportunities. Unfortunately, many are deprived of these due to financial constraints. ShikshaSahayak is dedicated to creating a supportive environment where students can thrive academically. Our platform enables students to raise the necessary funds for their education through community donations. By contributing to ShikshaSahayak, you can help ensure that bright students, regardless of their economic status, can pursue their dreams. With your support, these students can focus on their studies, excel in their educational pursuits, and ultimately break the cycle of poverty for their families. Join us in empowering the next generation of scholars and making a lasting impact on their lives.
+          Students from all backgrounds deserve access to quality education and opportunities. Unfortunately, many are deprived of these due to financial constraints. Fundmitra is dedicated to creating a supportive environment where students can thrive academically. Our platform enables students to raise the necessary funds for their education through community donations. By contributing to Fundmitra, you can help ensure that bright students, regardless of their economic status, can pursue their dreams. With your support, these students can focus on their studies, excel in their educational pursuits, and ultimately break the cycle of poverty for their families. Join us in empowering the next generation of scholars and making a lasting impact on their lives.
         </p>
       </div>
       <Flex w="100%" justify="center">
@@ -101,8 +100,8 @@ export const HomePage = () => {
               <Button
                 key={key}
                 variant={selectedContent === key ? 'solid' : 'outline'}
-                backgroundColor={selectedContent === key ? '#f8852f' : 'white'}
-                color={selectedContent === key ? 'white' : '#f8852f'}
+                backgroundColor={selectedContent === key ? '#0B4341' : 'white'}
+                color={selectedContent === key ? 'white' : '#02A95C'}
                 w="100%"
                 onClick={() => setSelectedContent(key)}
               >
