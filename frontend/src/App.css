@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -64,7 +65,7 @@ body {
   height: 35px;
   border: 0px;
   border-radius: 35px;
-  background-color: #f8853a;
+  background-color: #02A95C;
   color: white;
   font-weight: 600;
 }
@@ -127,7 +128,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 60px;
-  background-color: #eff8ff;
+  background-color: #9cf1da;
   /* padding: 30px; */
 }
 
@@ -196,7 +197,7 @@ body {
     opacity: 1;
   }
   25% {
-    color: #ff6347; /* Tomato */
+    color:#ff6347; /* Tomato */
   }
   50% {
     color: #32cd32; /* Lime Green */
@@ -234,7 +235,7 @@ body {
     height: 35px;
     border: 0px;
     border-radius: 35px;
-    background-color: #ee8334;
+    background-color: #02A95C;
     color: white;
     font-weight: 600;
     margin-bottom: 10px; /* Add margin for spacing */
@@ -453,7 +454,7 @@ body {
 
   button{
     margin-bottom: 20px;
-    background-color:#fc8237; 
+    background-color:#02A95C; 
     color: white;
   }
 }

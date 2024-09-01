@@ -1,8 +1,8 @@
 /* Footer.css */
 .footer {
-  background-color:#eff8ff;
+  background-color:#0B4341;
   color: white;
-  border-top: 1px solid black;
+  border-top: 1px solid rgb(255, 255, 255);
   /* padding: 40px 0; */
 }
 
@@ -11,7 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .footer-section {
@@ -30,21 +30,23 @@
 .footer-logos img {
   margin: 10px 5px;
   width: 50px; /* Adjust the width for better appearance */
-  height: auto; /* Maintain aspect ratio */
+  height: 30px; /* Maintain aspect ratio */
 }
 
 .footer-supported-title,
 .footer-download-title {
     margin-top: 10px;
     font-size: 16px;
-    color: black;
+    color: rgb(255, 255, 255);
   /* color: #ddd; */
 }
 
 .footer-bottom {
+  display: flex;
   background-color: #111;
   padding: 20px;
   text-align: center;
+  padding-bottom: 0;
 }
 
 .footer-bottom a {
