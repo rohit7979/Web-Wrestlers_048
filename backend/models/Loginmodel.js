@@ -48,7 +48,7 @@ customerSchema.pre('save', async function (next) {
 
 customerSchema.methods.comparePassword = function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.student_password);
-};
+}
 
 const Customer = mongoose.model('Customer', customerSchema);
 

@@ -40,4 +40,4 @@ userData.post("/changePassword", async(req, res)=>{
     }
 })
 
-export default userData
+export default userData;
