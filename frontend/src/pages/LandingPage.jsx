@@ -22,7 +22,9 @@ import '../App.css';
 import { Footer } from './Footer';
 import pic from '../../images/logo_transparent.png'
 import picture from '../../images/school2.jpg'
+import img from '../../images/landingImg.png'
 import { Link } from 'react-router-dom';
+
 // import Chat from '../components/G';
 // import Chat from '../components/Chat.jsx';
 
@@ -85,15 +87,7 @@ export const LandingPage = () => {
   return (
     <>
       <div id="head_part">
-        <div className='logo'>
-          <Link to='/home'><img src={pic} alt="logo" /></Link>
-        </div>
-        <div className='Cont'>
-          <span className="welcome-message">"Welcome! Empowering Students, Shaping Futures"</span>
-        </div>
-        <div className='but'>
-          <Button onClick={onOpen}>Start A Free Fundraiser Now</Button>
-        </div>
+       
       </div>
       <div>
         <div className='school'>
@@ -116,11 +110,11 @@ export const LandingPage = () => {
       </div>
         <div id="slog">
             <h4>Start a Free fundraiser on <strong>Fundmitra</strong> raise money for your Bright Future</h4>
-            <button onClick={onOpen}>Start A Fundraiser Now</button>
+            {/* <button onClick={onOpen}>Start A Fundraiser Now</button> */}
         </div>
         <div id="part2">
             <h1>How to start a fundraising Campaign on Fundmitra</h1>
-            <img src="https://i0.wp.com/crowdfunding.milaap.org/wp-content/uploads/2022/08/Landing-page-roadmap-1-e1659444309791.png?w=1080&ssl=1" alt="steps"/>
+            <img src={img} alt="steps"/>
         </div>
 
         <div id='formSection' className={formVisible ? 'visible' : ''}>

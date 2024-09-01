@@ -1,155 +1,184 @@
-import { Button, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { 
+  Button, 
+  Input, 
+  Modal, 
+  ModalBody, 
+  ModalCloseButton, 
+  ModalContent, 
+  ModalFooter, 
+  ModalHeader, 
+  ModalOverlay, 
+  useDisclosure, 
+  Text, 
+  Box, 
+  Flex 
+} from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function ProductCard() {
-    const [amount, setAmount] = useState("");
-    const navigate = useNavigate()
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const project = JSON.parse(localStorage.getItem('selectedProject'));
-    const accessToken = localStorage.getItem('accessToken');
-    useEffect(() => {
-        // Fetch donation information from your backend
-        const fetchDonationInfo = async () => {
-            try {
-                const res = await fetch('http://localhost:9090/api/donations/'); // Direct path
-                if (!res.ok) throw new Error('Network response was not ok.');
-                const data = await res.json();
-                if (data.length > 0) {
-                    // Assuming you are interested in the first donation
-                    const donation = data[0];
-                    setDonationInfo({
-                        totalAmount: donation.total_amount_gathered,
-                        goalAmount: donation.goal_amount,
-                        currentAmount: donation.current_amount,
-                        donors: donation.current_donators,
-                        numberOfDonors: donation.current_donators.length
-                    });
-                    console.log('Updated Donation Info:', {
-                        totalAmount: donation.total_amount_gathered,
-                        goalAmount: donation.goal_amount,
-                        currentAmount: donation.current_amount,
-                        donors: donation.current_donators,
-                        numberOfDonors: donation.current_donators.length
-                    });
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        };
+  const [amount, setAmount] = useState("");
+  const [donationInfo, setDonationInfo] = useState({});
+  const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const project = JSON.parse(localStorage.getItem('selectedProject'));
+  const accessToken = localStorage.getItem('accessToken');
 
-        fetchDonationInfo();
-    }, []);
-
-    const handlePayment = async () => {
-        try {
-            const res = await fetch('http://localhost:9090/api/payment/order', { // Direct path
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                    "Authorization": `Bearer ${accessToken}`
-                },
-                body: JSON.stringify({ amount, _id:project._id })
-            });
-            console.log(res);
-            if (!res.ok) throw new Error('Network response was not ok.');
-            const data = await res.json();
-            handlePaymentVerify(data.data);
-            onClose();
-            
-        } catch (error) {
-            console.log(error);
+  useEffect(() => {
+    const fetchDonationInfo = async () => {
+      try {
+        const res = await fetch('http://localhost:9090/api/donations/');
+        if (!res.ok) throw new Error('Network response was not ok.');
+        const data = await res.json();
+        if (data.length > 0) {
+          const donation = data[0];
+          setDonationInfo({
+            totalAmount: donation.total_amount_gathered,
+            goalAmount: donation.goal_amount,
+            currentAmount: donation.current_amount,
+            donors: donation.current_donators,
+            numberOfDonors: donation.current_donators.length
+          });
         }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchDonationInfo();
+  }, []);
+
+  const handlePayment = async () => {
+    try {
+      const res = await fetch('http://localhost:9090/api/payment/order', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "Authorization": `Bearer ${accessToken}`
+        },
+        body: JSON.stringify({ amount, _id: project._id })
+      });
+      if (!res.ok) throw new Error('Network response was not ok.');
+      const data = await res.json();
+      handlePaymentVerify(data.data);
+      onClose();
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const handlePaymentVerify = async (data) => {
-        const options = {
-            key: import.meta.env.RAZORPAY_KEY_ID,
-            amount: data.amount,
-            currency: data.currency,
-            name: "Devknus",
-            description: "Test Mode",
-            order_id: data.id,
-            handler: async (response) => {
-                try {
-                    const res = await fetch('http://localhost:9090/api/payment/verify', { // Direct path
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                             "Authorization": `Bearer ${accessToken}`
-                        },
-                        body: JSON.stringify({
-                            razorpay_order_id: response.razorpay_order_id,
-                            razorpay_payment_id: response.razorpay_payment_id,
-                            razorpay_signature: response.razorpay_signature,
-                            _id:project._id,
-                            amount: amount // Pass the donation amount
-                        })
-                    });
-
-                    if (!res.ok) throw new Error('Network response was not ok.');
-                    const verifyData = await res.json();
-                    if (verifyData.message) {
-                        toast.success(verifyData.message);
-                        navigate("/home");
-                        // Refresh donation info
-                        const updatedRes = await fetch('http://localhost:9090/api/donations/'); // Direct path
-                        if (!updatedRes.ok) throw new Error('Network response was not ok.');
-                        const updatedData = await updatedRes.json();
-                        if (updatedData.length > 0) {
-                            const donation = updatedData[0];
-                            setDonationInfo({
-                                totalAmount: donation.total_amount_gathered,
-                                goalAmount: donation.goal_amount,
-                                currentAmount: donation.current_amount,
-                                donors: donation.current_donators,
-                                numberOfDonors: donation.current_donators.length
-                            });
-                        }
-                    }
-                } catch (error) {
-                    console.log(error);
-                }
+  const handlePaymentVerify = async (data) => {
+    const options = {
+      key: import.meta.env.RAZORPAY_KEY_ID,
+      amount: data.amount,
+      currency: data.currency,
+      name: "Devknus",
+      description: "Test Mode",
+      order_id: data.id,
+      handler: async (response) => {
+        try {
+          const res = await fetch('http://localhost:9090/api/payment/verify', {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              "Authorization": `Bearer ${accessToken}`
             },
-            theme: {
-                color: "#5f63b8"
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              _id: project._id,
+              amount: amount
+            })
+          });
+
+          if (!res.ok) throw new Error('Network response was not ok.');
+          const verifyData = await res.json();
+          if (verifyData.message) {
+            toast.success(verifyData.message);
+            navigate("/home");
+            const updatedRes = await fetch('http://localhost:9090/api/donations/');
+            if (!updatedRes.ok) throw new Error('Network response was not ok.');
+            const updatedData = await updatedRes.json();
+            if (updatedData.length > 0) {
+              const donation = updatedData[0];
+              setDonationInfo({
+                totalAmount: donation.total_amount_gathered,
+                goalAmount: donation.goal_amount,
+                currentAmount: donation.current_amount,
+                donors: donation.current_donators,
+                numberOfDonors: donation.current_donators.length
+              });
             }
-        };
-        const rzp1 = new window.Razorpay(options);
-        rzp1.open();
-    }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      theme: {
+        color: "#5f63b8"
+      }
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  };
 
-    return (
+  return (
+    <>
+      <Button 
+        style={{ backgroundColor: "#ff8c00", color: "white" }} 
+        onClick={onOpen} 
+        _hover={{ bg: "#e07b00" }}
+      >
+        Donate Now
+      </Button>
 
-        <>
-            <Button style={{ backgroundColor: "#ff8c00", color: "white" }} onClick={onOpen}>Donate Now</Button>
-
-            <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Enter the amount</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                        <div>
-                            <div>
-                                <Input placeholder="Amount" onChange={(e) => { setAmount(e.target.value) }} />
-                            </div>
-                           
-                        </div>
-                    </ModalBody>
-
-                    <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={onClose}>
-                            Close
-                        </Button>
-                        <Button style={{ backgroundColor: "#ff8c00", color: "white" }}  onClick={handlePayment} >Donate Now</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
-
-
-
-        </>
-    );
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent borderRadius="lg" p={4}>
+          <ModalHeader fontSize="2xl" fontWeight="bold" textAlign="center">
+            Support Our Cause
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Box mb={4}>
+              <Text fontSize="lg" fontWeight="medium">
+                Enter the amount you'd like to donate:
+              </Text>
+              <Input 
+                placeholder="Enter amount (₹)" 
+                value={amount} 
+                onChange={(e) => setAmount(e.target.value)} 
+                mt={2}
+                borderColor="gray.300"
+                _focus={{ borderColor: "#ff8c00" }}
+              />
+            </Box>
+            <Flex direction="column" alignItems="center">
+              <Text fontSize="md" fontWeight="medium">
+                Current Fundraiser Status
+              </Text>
+              <Box mt={2}>
+                <Text>Total Raised: ₹{donationInfo.currentAmount} / ₹{donationInfo.goalAmount}</Text>
+                <Text>Donors: {donationInfo.numberOfDonors}</Text>
+              </Box>
+            </Flex>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="gray" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button 
+              style={{ backgroundColor: "#ff8c00", color: "white" }} 
+              onClick={handlePayment}
+              _hover={{ bg: "#e07b00" }}
+            >
+              Donate Now
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  );
 }
