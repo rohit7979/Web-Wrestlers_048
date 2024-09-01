@@ -8,7 +8,7 @@ export const Footer = () => {
     <Box className="footer">
       <Flex className="footer-content container">
         <VStack className="footer-section" align="start">
-          <Text className="footer-title">ShikshaSahayak</Text>
+          <Text className="footer-title">FundMitra</Text>
           <Link href="#">About us</Link>
           <Link href="#">Press and media</Link>
           <Link href="#">Team</Link>
@@ -19,8 +19,8 @@ export const Footer = () => {
         </VStack>
         <VStack className="footer-section" align="start">
           <Text className="footer-title">Indian office address</Text>
-          <Text>ShikshaSahayak Social Ventures India Pvt. Ltd.</Text>
-          <Text>Nextcoworks JP Nagar - Coworking Space JP Nagar Alankar Plaza, Bk circle, Nayak Layout, 8th Phase, J. P. Nagar, Bangalore, Karnataka, India 560078</Text>
+          <Text>Fundmitra Social Ventures India Pvt. Ltd.</Text>
+          <Text>Social Ventures JP Nagar Alankar Plaza, 8th Phase, J. P. Nagar, Bangalore, Karnataka, India 560078</Text>
           <Text className="footer-supported-title">Supported by</Text>
           <Flex className="footer-logos">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" />
@@ -49,8 +49,9 @@ export const Footer = () => {
         </VStack>
       </Flex>
       <Box className="footer-bottom">
-        <Text>&copy; 2010-2024 ShikshaSahayak.org. All rights reserved.</Text>
+        
         <Flex justifyContent="center" gap={4}>
+        <Text>&copy; 2010-2024 Fundmitra.org. All rights reserved.</Text>
           <Link href="#">Security & Privacy</Link>
           <Link href="#">Conditions of use</Link>
         </Flex>
