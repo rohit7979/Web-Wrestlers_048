@@ -100,16 +100,13 @@ export const LandingPage = () => {
           <img src={picture} alt="fund_img" />
         </div>
       </div>
-      <div id="bar" className={barVisible ? 'visible' : ''}>
-        <div className="box">Dedicated Campaign</div>
-        <div className="box">Free Promotional tools</div>
-        <div className="box">Withdraw money at any time</div>
-        <div className="box">All-inclusive app</div>
+      <div id="bar" className={barVisible ? 'visible' : ''} style={{fontSize:"2rem", fontWeight:"bold",color:"#02A95C"}}>
+      Your support is crucial in ensuring education for all!
       </div>
 
       <div id="hands">
         <div className="helping">
-            <img src="https://i0.wp.com/crowdfunding.milaap.org/wp-content/uploads/2022/09/fund-page.jpg?w=688&ssl=1" alt="helping hands"/>
+            <img src="https://inforttechnology.com/images/software-support.png" alt="helping hands"/>
         </div>
         <div className='quto'>
           <h1>Raise funds using an online fundraiser</h1>
@@ -118,11 +115,11 @@ export const LandingPage = () => {
         </div>
       </div>
         <div id="slog">
-            <h4>Start a Free fundraiser on <strong>ShikshaSahayak</strong> raise money for your Bright Future</h4>
+            <h4>Start a Free fundraiser on <strong>Fundmitra</strong> raise money for your Bright Future</h4>
             <button onClick={onOpen}>Start A Fundraiser Now</button>
         </div>
         <div id="part2">
-            <h1>How to start a fundraising Campaign on ShikshaSahayak</h1>
+            <h1>How to start a fundraising Campaign on Fundmitra</h1>
             <img src="https://i0.wp.com/crowdfunding.milaap.org/wp-content/uploads/2022/08/Landing-page-roadmap-1-e1659444309791.png?w=1080&ssl=1" alt="steps"/>
         </div>
 
