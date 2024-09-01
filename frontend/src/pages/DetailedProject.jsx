@@ -17,8 +17,8 @@ const DetailedProject = () => {
     return <Box>No project selected</Box>;
   }
 
-  const orange = '#FFA500';  // Orange color
-  const green = '#228B22';   // Green color
+  const orange = '#f27500';  // Orange color
+  const green = '#099934';   // Green color
   const darkGrey = '#333';   // Dark grey for general text
   const darkGreen = '#006400'; // Dark green for donation details
   const lightGray = '#f4f4f4'
@@ -74,7 +74,7 @@ const DetailedProject = () => {
         transition="all 0.3s ease-in-out"
         _hover={{ transform: 'scale(1.02)', boxShadow: 'xl' }}
       >
-        <Heading as="h1" size="xl" color={orange} mb={6}>
+        <Heading as="h1" size="xl" mb={6}>
           {project.donation_title}
         </Heading>
 
