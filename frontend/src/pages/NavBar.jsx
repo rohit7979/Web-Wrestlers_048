@@ -360,7 +360,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../../images/logo.png';
 
-const API_URL = 'https://shikshasahayak.onrender.com/projects';
+const API_URL = 'http://localhost:9090/projects';
 
 export function NavBar({ isLoggedIn, setIsLoggedIn }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
