@@ -2,8 +2,8 @@ import express from 'express';
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 import 'dotenv/config';
-import Customer from "../Models/Loginmodel.js";
 import mongoose from 'mongoose';
+import Customer from '../models/Loginmodel.js';
 const router = express.Router();
 
 const razorpayInstance = new Razorpay({

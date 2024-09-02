@@ -1,5 +1,5 @@
 import { Router } from "express";
-import Customer from "../Models/Loginmodel.js";
+import Customer from "../models/Loginmodel.js";
 import mongoose from "mongoose";
 import bcrypt from 'bcryptjs';
 

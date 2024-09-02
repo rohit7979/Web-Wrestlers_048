@@ -31,7 +31,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../../images/logo.png';
 
-const API_URL = 'http://localhost:9090/projects';
+const API_URL = 'https://backend-render-7zzl.onrender.com/projects';
 
 export function NavBar({ isLoggedIn, setIsLoggedIn }) {
   const { isOpen, onOpen, onClose } = useDisclosure();

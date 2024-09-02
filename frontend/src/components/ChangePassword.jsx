@@ -10,7 +10,7 @@ const ChangePassword = () => {
     try {
       const token = localStorage.getItem('resetToken');
       const config = { headers: { Authorization: `Bearer ${token}` } }
-      const response = await axios.post('http://localhost:9090/user/changePassword', {newPassword}, config);
+      const response = await axios.post('https://backend-render-7zzl.onrender.com/user/changePassword', {newPassword}, config);
       toast({
         title: 'Success',
         description: response.data,

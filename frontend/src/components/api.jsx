@@ -12,7 +12,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:9090/api', // Adjust this based on your backend URL
+  baseURL: 'https://backend-render-7zzl.onrender.com/api', // Adjust this based on your backend URL
 });
 
 // Interceptor to add the access token to every request

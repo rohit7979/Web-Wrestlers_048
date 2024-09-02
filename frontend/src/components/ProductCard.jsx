@@ -28,7 +28,7 @@ export default function ProductCard() {
   useEffect(() => {
     const fetchDonationInfo = async () => {
       try {
-        const res = await fetch('http://localhost:9090/api/donations/');
+        const res = await fetch('https://backend-render-7zzl.onrender.com/api/donations/');
         if (!res.ok) throw new Error('Network response was not ok.');
         const data = await res.json();
         if (data.length > 0) {
@@ -51,7 +51,7 @@ export default function ProductCard() {
 
   const handlePayment = async () => {
     try {
-      const res = await fetch('http://localhost:9090/api/payment/order', {
+      const res = await fetch('https://backend-render-7zzl.onrender.com/api/payment/order', {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -78,7 +78,7 @@ export default function ProductCard() {
       order_id: data.id,
       handler: async (response) => {
         try {
-          const res = await fetch('http://localhost:9090/api/payment/verify', {
+          const res = await fetch('https://backend-render-7zzl.onrender.com/api/payment/verify', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
@@ -98,7 +98,7 @@ export default function ProductCard() {
           if (verifyData.message) {
             toast.success(verifyData.message);
             navigate("/home");
-            const updatedRes = await fetch('http://localhost:9090/api/donations/');
+            const updatedRes = await fetch('https://backend-render-7zzl.onrender.com/api/donations/');
             if (!updatedRes.ok) throw new Error('Network response was not ok.');
             const updatedData = await updatedRes.json();
             if (updatedData.length > 0) {

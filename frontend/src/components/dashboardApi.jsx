@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:9090';
+const API_BASE_URL = 'https://backend-render-7zzl.onrender.com';
 
 export const getUserData = (token) => {
   return axios.get(`${API_BASE_URL}/user`, {

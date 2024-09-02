@@ -62,7 +62,7 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:9090/projects')
+    fetch('https://backend-render-7zzl.onrender.com/projects')
       .then((response) => response.json())
       .then((data) => {
         const activeDonations = data.filter(

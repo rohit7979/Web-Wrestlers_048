@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import {} from 'dotenv/config';
-import Customer from '../Models/Loginmodel.js';
+import Customer from '../models/Loginmodel.js';
+
 
 export const protect = (req, res, next) => {
   let token;

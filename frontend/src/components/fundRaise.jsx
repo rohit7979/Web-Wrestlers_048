@@ -46,7 +46,7 @@ export function FundRaise() {
 
     async function postProject() {
         try {
-            const res = await axios.post("http://localhost:9090/project/update", input, config);
+            const res = await axios.post("https://backend-render-7zzl.onrender.com/project/update", input, config);
             toast({
                 title: `Submission ${res.data.status}`,
                 status: 'info',

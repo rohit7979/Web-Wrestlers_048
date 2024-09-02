@@ -1,7 +1,8 @@
 import nodemailer from "nodemailer";
 import "dotenv/config";
-import Customer from "../Models/Loginmodel.js";
+
 import bcrypt from "bcrypt"
+import Customer from "../models/Loginmodel.js";
 // Temporary store for OTPs
 const otpStore = new Map();
 

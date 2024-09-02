@@ -1,5 +1,5 @@
 import express from "express";
-import Customer from "../Models/Loginmodel.js";
+import Customer from "../models/Loginmodel.js";
 const projectRoutes = express.Router();
 import mongoose from "mongoose";
 

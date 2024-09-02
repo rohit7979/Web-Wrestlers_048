@@ -1,8 +1,8 @@
 import { Router } from "express";
-import Customer from "../Models/Loginmodel.js";
 import mongoose from "mongoose";
 import multer from "multer"
 import path from "path"
+import Customer from "../models/Loginmodel.js";
 const storage = multer.diskStorage({
     destination:(req, file, cb) =>{
         cb(null, "../user_media")
